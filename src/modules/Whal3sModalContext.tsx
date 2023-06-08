@@ -41,9 +41,10 @@ interface Whal3sModalProviderProps {
     children: React.ReactNode,
     utilityId: string,
     provider: WalletProviderInterface,
+    modalImage?: string
 }
 
-const Whal3sModalProvider = ({ children, utilityId, provider }: Whal3sModalProviderProps) => {
+const Whal3sModalProvider = ({ children, utilityId, provider, modalImage }: Whal3sModalProviderProps) => {
     const [state, dispatch] = useReducer(whal3sModalReducer, {
         open: false,
         utility: undefined,
@@ -57,7 +58,9 @@ const Whal3sModalProvider = ({ children, utilityId, provider }: Whal3sModalProvi
             dispatch({type: 'SET_UTILITY', payload: utility})
             dispatch({type: 'SET_STEP', payload: step.detail.step})
             if (step.detail.step === NftValidationUtility.STEP_RESERVED) {
-                dispatch({type: 'SET_OPEN', payload: false})
+                setTimeout(() => {
+                    dispatch({type: 'SET_OPEN', payload: false})
+                }, 1500)
             }
         })
         dispatch({type: 'SET_UTILITY', payload: utility})
@@ -75,7 +78,7 @@ const Whal3sModalProvider = ({ children, utilityId, provider }: Whal3sModalProvi
     return (
       <Whal3sModalContext.Provider value={{ state, dispatch }}>
           {children}
-          <Whal3sModal/>
+          <Whal3sModal image={modalImage} />
       </Whal3sModalContext.Provider>
     );
 };

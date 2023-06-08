@@ -3,40 +3,55 @@ import {Whal3sModalContext} from "../../modules/Whal3sModalContext";
 import {GoVerified} from "react-icons/go";
 import classNames from "classnames";
 
+const SuccessIcon = ({ className }: {className?: string}) => {
+
+  return (<svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 122 122">
+    <g clipPath="url(#clip0_92_125)">
+      <path d="M114.426 69.9467C112.541 67.3445 111.526 64.2133 111.526 61C111.526 57.7867 112.541 54.6555 114.426 52.0533L118.289 46.7158C118.762 46.0641 119.073 45.3094 119.196 44.5141C119.32 43.7187 119.253 42.9053 119.001 42.1408C118.746 41.3844 118.32 40.6971 117.756 40.1327C117.191 39.5683 116.504 39.1422 115.748 38.8875L109.495 36.8542C106.432 35.8662 103.762 33.9305 101.871 31.3265C99.9799 28.7226 98.9649 25.585 98.9727 22.3667V15.7583C98.9721 14.956 98.7816 14.1652 98.4167 13.4506C98.0519 12.736 97.5231 12.118 96.8736 11.6469C96.2241 11.1759 95.4723 10.8653 94.6797 10.7406C93.8872 10.6158 93.0763 10.6804 92.3135 10.9292L86.0102 12.9625C82.95 13.9527 79.6552 13.9501 76.5966 12.9549C73.5381 11.9598 70.8725 10.023 68.981 7.42167L65.1177 2.08417C64.6244 1.46557 63.9981 0.966066 63.2852 0.622767C62.5724 0.279468 61.7914 0.101196 61.0002 0.101196C60.209 0.101196 59.4279 0.279468 58.7151 0.622767C58.0023 0.966066 57.376 1.46557 56.8827 2.08417L53.0193 7.42167C51.1278 10.023 48.4622 11.9598 45.4037 12.9549C42.3452 13.9501 39.0503 13.9527 35.9902 12.9625L29.6868 10.9292C28.924 10.6804 28.1132 10.6158 27.3206 10.7406C26.528 10.8653 25.7763 11.1759 25.1267 11.6469C24.4772 12.118 23.9484 12.736 23.5836 13.4506C23.2188 14.1652 23.0283 14.956 23.0277 15.7583V22.3667C23.0355 25.585 22.0205 28.7226 20.1292 31.3265C18.2379 33.9305 15.5681 35.8662 12.5052 36.8542L6.25267 38.8875C5.49623 39.1422 4.80894 39.5683 4.24456 40.1327C3.68018 40.6971 3.25399 41.3844 2.99934 42.1408C2.74726 42.9053 2.68034 43.7187 2.80406 44.5141C2.92779 45.3094 3.23863 46.0641 3.71101 46.7158L7.57434 52.0533C9.45946 54.6555 10.4745 57.7867 10.4745 61C10.4745 64.2133 9.45946 67.3445 7.57434 69.9467L3.71101 75.2842C3.23863 75.9359 2.92779 76.6906 2.80406 77.4859C2.68034 78.2813 2.74726 79.0947 2.99934 79.8592C3.25399 80.6156 3.68018 81.3029 4.24456 81.8673C4.80894 82.4317 5.49623 82.8579 6.25267 83.1125L12.5052 85.1458C15.5681 86.1338 18.2379 88.0695 20.1292 90.6735C22.0205 93.2775 23.0355 96.415 23.0277 99.6333V106.242C23.0283 107.044 23.2188 107.835 23.5836 108.549C23.9484 109.264 24.4772 109.882 25.1267 110.353C25.7763 110.824 26.528 111.135 27.3206 111.259C28.1132 111.384 28.924 111.32 29.6868 111.071L35.9393 109.038C39.006 108.031 42.3133 108.025 45.3835 109.021C48.4537 110.017 51.1278 111.963 53.0193 114.578L56.8827 119.916C57.3573 120.562 57.9773 121.087 58.6926 121.45C59.4079 121.812 60.1984 122 61.0002 122C61.8019 122 62.5924 121.812 63.3077 121.45C64.023 121.087 64.6431 120.562 65.1177 119.916L68.981 114.578C70.8757 111.967 73.5499 110.023 76.6191 109.028C79.6882 108.032 82.994 108.035 86.061 109.038L92.3135 111.071C93.0763 111.32 93.8872 111.384 94.6797 111.259C95.4723 111.135 96.2241 110.824 96.8736 110.353C97.5231 109.882 98.0519 109.264 98.4167 108.549C98.7816 107.835 98.9721 107.044 98.9727 106.242V99.6333C98.9649 96.415 99.9799 93.2775 101.871 90.6735C103.762 88.0695 106.432 86.1338 109.495 85.1458L115.748 83.1125C116.504 82.8579 117.191 82.4317 117.756 81.8673C118.32 81.3029 118.746 80.6156 119.001 79.8592C119.253 79.0947 119.32 78.2813 119.196 77.4859C119.073 76.6906 118.762 75.9359 118.289 75.2842L114.426 69.9467ZM84.9427 54.4273L59.526 79.8439C58.5727 80.7969 57.28 81.3323 55.9321 81.3323C54.5842 81.3323 53.2914 80.7969 52.3382 79.8439L37.0882 64.5939C36.6027 64.125 36.2154 63.5641 35.949 62.9439C35.6826 62.3237 35.5423 61.6567 35.5365 60.9817C35.5306 60.3067 35.6592 59.6374 35.9148 59.0127C36.1704 58.3879 36.5479 57.8204 37.0252 57.3431C37.5025 56.8658 38.07 56.4883 38.6947 56.2327C39.3195 55.9772 39.9888 55.8485 40.6638 55.8544C41.3388 55.8603 42.0058 56.0005 42.626 56.2669C43.2462 56.5333 43.8071 56.9206 44.276 57.4061L55.9168 69.0622L77.7396 47.2394C78.6983 46.3135 79.9824 45.8011 81.3152 45.8127C82.648 45.8242 83.923 46.3589 84.8655 47.3013C85.808 48.2438 86.3426 49.5188 86.3542 50.8516C86.3658 52.1845 85.8534 53.4685 84.9274 54.4273H84.9427Z" fill="black"/>
+    </g>
+    <defs>
+      <clipPath id="clip0_92_125">
+        <rect width="122" height="122" fill="white"/>
+      </clipPath>
+    </defs>
+  </svg>)
+}
+
 const StepWalletConnected = () => {
     const {state, dispatch} = useContext(Whal3sModalContext);
 
     return (
-        <div className={`h-full grid grid-cols-1 md:grid-cols-2 md:gap-10`}>
-            <div className={`order-2 md:order-1 mt-10 md:mt-0 flex flex-col justify-between`}>
-                <div className={`flex justify-center`}>
-                    <div className={`flex flex-col gap-10 items-center`}>
-                        <GoVerified className={`test-black h-48 w-48`}></GoVerified>
-                        <p className={`font-bold text-lg`}>Success !</p>
-                    </div>
+      <div className={``}>
+          <div className={`md:whal3s-h-[35rem] whal3s-mt-10 md:whal3s-mt-0 whal3s-flex whal3s-flex-col whal3s-justify-center`}>
+              <div className="whal3s-flex-1 whal3s-flex whal3s-justify-center whal3s-items-end">
+                  <div className="whal3s-flex whal3s-flex-col whal3s-gap-5 whal3s-items-center">
+                      <SuccessIcon className="whal3s-test-black whal3s-h-32 whal3s-w-32"></SuccessIcon>
+                      <p className="whal3s-font-bold whal3s-text-2xl">Success !</p>
+                  </div>
 
-                </div>
+              </div>
 
 
-                <button
-                    type="button"
-                    onClick={() => {
-                        dispatch({type: 'SET_OPEN', payload: false})
-                    }}
-                    className={classNames(
-                        'my-10 md:mb-0 rounded-full w-full bg-black px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black',
-                        'disabled:opacity-50 disabled:cursor-not-allowed',
-                        'flex justify-center items-center space-x-2.5'
-                    )}
-                >
-                    <span>Close</span>
-                </button>
+            <div className={'whal3s-flex-1 whal3s-flex whal3s-justify-center whal3s-items-end'}>
+              <button
+                type="button"
+                onClick={() => {
+                  dispatch({type: 'SET_OPEN', payload: false})
+                }}
+                className={classNames(
+                  'whal3s-my-10 md:whal3s-mb-0 whal3s-rounded-full whal3s-w-full whal3s-bg-black whal3s-px-4 whal3s-py-2.5 whal3s-text-sm whal3s-font-semibold whal3s-text-white whal3s-shadow-sm hover:bg-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:whal3s-outline-black',
+                  'disabled:whal3s-opacity-50 disabled:whal3s-cursor-not-allowed',
+                  'whal3s-flex whal3s-justify-center whal3s-items-end whal3s-space-x-2.5',
+                  'whal3s-max-w-xs whal3s-mx-auto'
+                )}
+              >
+                <span>Close</span>
+              </button>
+
             </div>
-            <div
-                className={`bg-gray-300 rounded-lg  md:min-h-[400px] order-1 md:order-2 flex justify-center items-center`}>
-                {/*<Image src={Whal3sSticker} alt={'Whal3s Sticker'} className={``}/>*/}
-            </div>
-        </div>
+
+          </div>
+      </div>
     );
 };
 
