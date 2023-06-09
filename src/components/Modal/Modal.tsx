@@ -5,7 +5,6 @@ import StepUninitialized from "./StepUninitialized";
 import StepNftsFetched from "./StepNftsFetched";
 import StepReserved from "./StepReserved";
 import {IoClose} from "react-icons/io5";
-import './Modal.css'
 
 
 const Whal3sModal = ({image}: {image?: string}) => {
@@ -23,7 +22,7 @@ const Whal3sModal = ({image}: {image?: string}) => {
         }
     }, [state.utility?.nfts])
     return (
-        <>
+        <div id={'whal3s-modal'}>
             <input type="checkbox" id="whal3s-modal" className="whal3s-modal-toggle" checked={state.open} readOnly={true}/>
             <div ref={backdrop} className="whal3s-modal whal3s-whal3s-modal whal3s-modal-bottom whal3s-whal3s-modal-bottom sm:whal3s-modal-middle" onClick={(e) => {
                 if (e.target === backdrop.current)
@@ -53,7 +52,7 @@ const Whal3sModal = ({image}: {image?: string}) => {
 
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 
