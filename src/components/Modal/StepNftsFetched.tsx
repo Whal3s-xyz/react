@@ -99,7 +99,7 @@ const StepNftsFetched = ({image}: {image?: string}) => {
                     )}
                   >
                       <CgSpinnerTwo
-                        className={`whal3s-animate whal3s-animate-spin whal3s-h-5 whal3s-w-5 ${!claiming ? 'whal3s-opacity-0' : 'whal3s-opacity-100'}`}/> <span>Claim reward</span>
+                        className={`whal3s-animate whal3s-animate-spin whal3s-h-5 whal3s-w-5 ${!claiming ? 'whal3s-opacity-0' : 'whal3s-opacity-100'}`}/> <span>{claiming ? 'Sign message in wallet' : 'Claim reward'}</span>
                       <span className="whal3s-h-5 whal3s-w-5"></span>
                   </button>
               </div>
