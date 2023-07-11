@@ -1,20 +1,165 @@
-import React,{useContext} from 'react';
+import React, { useContext, useEffect } from 'react'
 import {Whal3sModalContext} from "../../modules/Whal3sModalContext";
 import {GoVerified} from "react-icons/go";
 import classNames from "classnames";
+import anime from 'animejs/lib/anime.es.js';
+
 
 const SuccessIcon = ({ className }: {className?: string}) => {
 
-  return (<svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 122 122">
-    <g clipPath="url(#clip0_92_125)">
-      <path d="M114.426 69.9467C112.541 67.3445 111.526 64.2133 111.526 61C111.526 57.7867 112.541 54.6555 114.426 52.0533L118.289 46.7158C118.762 46.0641 119.073 45.3094 119.196 44.5141C119.32 43.7187 119.253 42.9053 119.001 42.1408C118.746 41.3844 118.32 40.6971 117.756 40.1327C117.191 39.5683 116.504 39.1422 115.748 38.8875L109.495 36.8542C106.432 35.8662 103.762 33.9305 101.871 31.3265C99.9799 28.7226 98.9649 25.585 98.9727 22.3667V15.7583C98.9721 14.956 98.7816 14.1652 98.4167 13.4506C98.0519 12.736 97.5231 12.118 96.8736 11.6469C96.2241 11.1759 95.4723 10.8653 94.6797 10.7406C93.8872 10.6158 93.0763 10.6804 92.3135 10.9292L86.0102 12.9625C82.95 13.9527 79.6552 13.9501 76.5966 12.9549C73.5381 11.9598 70.8725 10.023 68.981 7.42167L65.1177 2.08417C64.6244 1.46557 63.9981 0.966066 63.2852 0.622767C62.5724 0.279468 61.7914 0.101196 61.0002 0.101196C60.209 0.101196 59.4279 0.279468 58.7151 0.622767C58.0023 0.966066 57.376 1.46557 56.8827 2.08417L53.0193 7.42167C51.1278 10.023 48.4622 11.9598 45.4037 12.9549C42.3452 13.9501 39.0503 13.9527 35.9902 12.9625L29.6868 10.9292C28.924 10.6804 28.1132 10.6158 27.3206 10.7406C26.528 10.8653 25.7763 11.1759 25.1267 11.6469C24.4772 12.118 23.9484 12.736 23.5836 13.4506C23.2188 14.1652 23.0283 14.956 23.0277 15.7583V22.3667C23.0355 25.585 22.0205 28.7226 20.1292 31.3265C18.2379 33.9305 15.5681 35.8662 12.5052 36.8542L6.25267 38.8875C5.49623 39.1422 4.80894 39.5683 4.24456 40.1327C3.68018 40.6971 3.25399 41.3844 2.99934 42.1408C2.74726 42.9053 2.68034 43.7187 2.80406 44.5141C2.92779 45.3094 3.23863 46.0641 3.71101 46.7158L7.57434 52.0533C9.45946 54.6555 10.4745 57.7867 10.4745 61C10.4745 64.2133 9.45946 67.3445 7.57434 69.9467L3.71101 75.2842C3.23863 75.9359 2.92779 76.6906 2.80406 77.4859C2.68034 78.2813 2.74726 79.0947 2.99934 79.8592C3.25399 80.6156 3.68018 81.3029 4.24456 81.8673C4.80894 82.4317 5.49623 82.8579 6.25267 83.1125L12.5052 85.1458C15.5681 86.1338 18.2379 88.0695 20.1292 90.6735C22.0205 93.2775 23.0355 96.415 23.0277 99.6333V106.242C23.0283 107.044 23.2188 107.835 23.5836 108.549C23.9484 109.264 24.4772 109.882 25.1267 110.353C25.7763 110.824 26.528 111.135 27.3206 111.259C28.1132 111.384 28.924 111.32 29.6868 111.071L35.9393 109.038C39.006 108.031 42.3133 108.025 45.3835 109.021C48.4537 110.017 51.1278 111.963 53.0193 114.578L56.8827 119.916C57.3573 120.562 57.9773 121.087 58.6926 121.45C59.4079 121.812 60.1984 122 61.0002 122C61.8019 122 62.5924 121.812 63.3077 121.45C64.023 121.087 64.6431 120.562 65.1177 119.916L68.981 114.578C70.8757 111.967 73.5499 110.023 76.6191 109.028C79.6882 108.032 82.994 108.035 86.061 109.038L92.3135 111.071C93.0763 111.32 93.8872 111.384 94.6797 111.259C95.4723 111.135 96.2241 110.824 96.8736 110.353C97.5231 109.882 98.0519 109.264 98.4167 108.549C98.7816 107.835 98.9721 107.044 98.9727 106.242V99.6333C98.9649 96.415 99.9799 93.2775 101.871 90.6735C103.762 88.0695 106.432 86.1338 109.495 85.1458L115.748 83.1125C116.504 82.8579 117.191 82.4317 117.756 81.8673C118.32 81.3029 118.746 80.6156 119.001 79.8592C119.253 79.0947 119.32 78.2813 119.196 77.4859C119.073 76.6906 118.762 75.9359 118.289 75.2842L114.426 69.9467ZM84.9427 54.4273L59.526 79.8439C58.5727 80.7969 57.28 81.3323 55.9321 81.3323C54.5842 81.3323 53.2914 80.7969 52.3382 79.8439L37.0882 64.5939C36.6027 64.125 36.2154 63.5641 35.949 62.9439C35.6826 62.3237 35.5423 61.6567 35.5365 60.9817C35.5306 60.3067 35.6592 59.6374 35.9148 59.0127C36.1704 58.3879 36.5479 57.8204 37.0252 57.3431C37.5025 56.8658 38.07 56.4883 38.6947 56.2327C39.3195 55.9772 39.9888 55.8485 40.6638 55.8544C41.3388 55.8603 42.0058 56.0005 42.626 56.2669C43.2462 56.5333 43.8071 56.9206 44.276 57.4061L55.9168 69.0622L77.7396 47.2394C78.6983 46.3135 79.9824 45.8011 81.3152 45.8127C82.648 45.8242 83.923 46.3589 84.8655 47.3013C85.808 48.2438 86.3426 49.5188 86.3542 50.8516C86.3658 52.1845 85.8534 53.4685 84.9274 54.4273H84.9427Z" fill="black"/>
-    </g>
-    <defs>
-      <clipPath id="clip0_92_125">
-        <rect width="122" height="122" fill="white"/>
-      </clipPath>
-    </defs>
-  </svg>)
+  useEffect(() => {
+    var tl = anime.timeline({
+//easing: 'easeOutExpo',
+      //duration: 750,
+      autoplay: true,
+      loop: false
+    });
+
+    tl
+      .add({
+        targets: '.success',
+        scale:[0.001, 1],
+        rotate:[100,360],
+        opacity: [0.001, 1],
+        //easing: 'easeOutExpo',
+        //translateY: 50,
+        duration: 1000
+
+      },)
+
+
+      .add({
+        targets: '.checkmark',
+        // transformOrigin: ['50% 50% 0px', '50% 50% 0px'],
+        // scale:[0.001, 1],
+        duration: 500,
+        easing: 'easeInOutSine',
+
+        strokeDashoffset: [anime.setDashoffset, 0],
+      },200)
+
+      .add({
+        targets: '.line1',
+        transformOrigin: ['50% 50% 0px', '50% 50% 0px'],
+        opacity: {
+          value:[0, 1],
+          delay:50,
+        },
+        scale:[0.000, 1],
+        duration: 1000
+
+      },400)
+
+      .add({
+        targets: '.line2',
+        transformOrigin: ['50% 50% 0px', '50% 50% 0px'],
+        opacity: {
+          value:[0, 1],
+          delay:50,
+        },
+        scale:[0.001, 1],
+        duration: 1000
+
+      },300)
+
+      .add({
+        targets: '.line3',
+        transformOrigin: ['50% 50% 0px', '50% 50% 0px'],
+        opacity: {
+          value:[0, 1],
+          delay:50,
+        },
+        scale:[0.001, 1],
+        duration: 1000
+
+      },400)
+
+      .add({
+        targets: '.line4',
+        transformOrigin: ['50% 50% 0px', '50% 50% 0px'],
+        opacity: {
+          value:[0, 1],
+          delay:50,
+        },
+        scale:[0.001, 1],
+        duration: 1000
+
+      },400)
+
+      .add({
+        targets: '.line5',
+        transformOrigin: ['50% 50% 0px', '50% 50% 0px'],
+        opacity: {
+          value:[0, 1],
+          delay:50,
+        },
+        scale:[0.001, 1],
+        duration: 1000
+
+      },300)
+
+      .add({
+        targets: '.line6',
+        transformOrigin: ['50% 50% 0px', '50% 50% 0px'],
+        opacity: {
+          value:[0, 1],
+          delay:50,
+        },
+        scale:[0.001, 1],
+        duration: 1000
+
+      },400)
+
+      .add({
+        targets: '.line7',
+        transformOrigin: ['50% 50% 0px', '50% 50% 0px'],
+        opacity: {
+          value:[0, 1],
+          delay:50,
+        },
+        scale:[0.001, 1],
+        duration: 1000
+
+      },300)
+
+      .add({
+        targets: '.line8',
+        transformOrigin: ['50% 50% 0px', '50% 50% 0px'],
+        opacity: {
+          value:[0, 1],
+          delay:50,
+        },
+        scale:[0.001, 1],
+        duration: 1000
+
+      },400)
+
+  }, [])
+
+
+  return (<svg xmlns="http://www.w3.org/2000/svg" className={`${className} success`} width="300" height="600" viewBox="0 0 101 101"
+               fill="none">
+      <ellipse cx="50.5171" cy="49.9367" rx="11.5213" ry="11.5497" fill="#00AC3E" />
+      <path fillRule="evenodd" clipRule="evenodd" className="checkmark"
+            d="M45.2576 48.604L49.084 52.6483L55.1814 46.1154" stroke="white" strokeWidth="2.5" />
+      <line className="line1" x1="61.8656" y1="13.4946" x2="58.3004" y2="26.8" stroke="#00AC3E" strokeWidth="3"
+            strokeLinecap="round" />
+      <line className="line2" x1="84.906" y1="32.622" x2="72.9767" y2="39.5094" stroke="#00AC3E" strokeWidth="3"
+            strokeLinecap="round" />
+      <line className="line3" x1="87.6729" y1="62.4366" x2="74.3675" y2="58.8715" stroke="#00AC3E" strokeWidth="3"
+            strokeLinecap="round" />
+      <line className="line4" x1="68.5467" y1="85.4764" x2="61.6593" y2="73.5471" stroke="#00AC3E" strokeWidth="3"
+            strokeLinecap="round" />
+      <line className="line5" x1="45.1935" y1="75.715" x2="41.6283" y2="89.0205" stroke="#00AC3E" strokeWidth="3"
+            strokeLinecap="round" />
+      <line className="line6" x1="29.1204" y1="64.8283" x2="17.1911" y2="71.7157" stroke="#00AC3E" strokeWidth="3"
+            strokeLinecap="round" />
+      <line className="line7" x1="25.4527" y1="45.765" x2="12.1473" y2="42.1998" stroke="#00AC3E" strokeWidth="3"
+            strokeLinecap="round" />
+      <line className="line8" x1="36.3394" y1="29.6917" x2="29.452" y2="17.7624" stroke="#00AC3E" strokeWidth="3"
+            strokeLinecap="round" />
+    </svg>
+  )
 }
 
 const StepWalletConnected = () => {
@@ -24,8 +169,8 @@ const StepWalletConnected = () => {
       <div className={``}>
           <div className={`md:whal3s-h-[35rem] whal3s-mt-10 md:whal3s-mt-0 whal3s-flex whal3s-flex-col whal3s-justify-center`}>
               <div className="whal3s-flex-1 whal3s-flex whal3s-justify-center whal3s-items-end">
-                  <div className="whal3s-flex whal3s-flex-col whal3s-gap-5 whal3s-items-center">
-                      <SuccessIcon className="whal3s-test-black whal3s-h-32 whal3s-w-32"></SuccessIcon>
+                  <div className="whal3s-flex whal3s-flex-col whal3s-gap-10 whal3s-items-center">
+                      <SuccessIcon className="whal3s-h-48 whal3s-w-48"></SuccessIcon>
                       <p className="whal3s-font-bold whal3s-text-2xl">Success !</p>
                   </div>
 

@@ -57,11 +57,11 @@ const Whal3sModalProvider = ({ children, utilityId, provider, modalImage }: Whal
         utility.addEventListener('stepChanged', (step:any) => {
             dispatch({type: 'SET_UTILITY', payload: utility})
             dispatch({type: 'SET_STEP', payload: step.detail.step})
-            if (step.detail.step === NftValidationUtility.STEP_RESERVED) {
-                setTimeout(() => {
-                    dispatch({type: 'SET_OPEN', payload: false})
-                }, 1500)
-            }
+            // if (step.detail.step === NftValidationUtility.STEP_RESERVED) {
+            //     setTimeout(() => {
+            //         dispatch({type: 'SET_OPEN', payload: false})
+            //     }, 1500)
+            // }
         })
         dispatch({type: 'SET_UTILITY', payload: utility})
     }

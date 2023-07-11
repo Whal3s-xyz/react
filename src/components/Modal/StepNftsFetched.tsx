@@ -109,11 +109,10 @@ const StepNftsFetched = ({image}: {image?: string}) => {
               </div>
           </div>
           <div
-            className={`whal3s-bg-whal3s-gray whal3s-rounded-xl whal3s-w-full whal3s-order-1 md:whal3s-order-2 whal3s-flex whal3s-justify-center whal3s-items-center max-md:whal3s-aspect-[228/265]  md:whal3s-h-[35rem]`}>
-              {/*<Image src={Whal3sLogoOnMacbook} alt={'Whal3s Sticker'} className={`whal3s-bg-whal3s-gray whal3s-rounded-xl whal3s-aspect-[228/265] whal3s-w-full  whal3s-flex whal3s-justify-center whal3s-items-center`}/>*/}
+            className={`whal3s-rounded-xl whal3s-w-full whal3s-order-1 md:whal3s-order-2 whal3s-flex whal3s-justify-center whal3s-items-center  md:whal3s-h-[35rem]`}>
               {image ? <img src={image}
                             alt={'Modal image'}
-                            className={'whal3s-rounded-xl whal3s-w-full whal3s-max-h-full  whal3s-object-cover'}/>
+                            className={'whal3s-bg-whal3s-gray whal3s-rounded-xl whal3s-w-full whal3s-max-h-full  whal3s-object-cover'}/>
                 : <div className={'whal3s-bg-gradient-to-tr whal3s-from-[#503eef] whal3s-to-[#9156d7] whal3s-rounded-xl whal3s-w-full whal3s-h-full whal3s-object-cover'}/>}
 
           </div>
