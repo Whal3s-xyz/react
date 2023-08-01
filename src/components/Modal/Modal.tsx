@@ -28,7 +28,7 @@ const Whal3sModal = ({image}: {image?: string}) => {
                 if (e.target === backdrop.current)
                     dispatch({type: 'SET_OPEN', payload: false})
             }}>
-                <div className="whal3s-modal-box whal3s-h-full md:whal3s-h-auto md:!whal3s-w-11/12  md:!whal3s-max-w-5xl md:whal3s-px-5 md:whal3s-pl-10 md:whal3s-py-5 whal3s-relative whal3s-bg-white whal3s-text-black">
+                <div className={`whal3s-modal-box whal3s-h-full md:whal3s-h-auto md:!whal3s-w-11/12  ${image ? 'md:!whal3s-max-w-5xl' : 'md:!whal3s-max-w-lg'} md:whal3s-px-5 ${image ? 'md:whal3s-pl-10': ''} md:whal3s-py-5 whal3s-relative whal3s-bg-white whal3s-text-black`}>
 
                     <button
                       type="button"

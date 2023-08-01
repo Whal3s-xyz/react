@@ -37,8 +37,8 @@ const StepNftsFetched = ({image}: {image?: string}) => {
 
 
     return (
-      <div className={`whal3s-h-full whal3s-grid whal3s-grid-cols-1 md:whal3s-grid-cols-2 md:whal3s-gap-0`}>
-          <div className={`whal3s-order-2 md:whal3s-order-1 whal3s-mt-10 md:whal3s-mt-0 md:whal3s-pl-5 md:whal3s-pt-5 md:whal3s-pr-20 whal3s-flex whal3s-flex-col whal3s-justify-start md:whal3s-h-[35rem] max-md:whal3s-pb-10`}>
+      <div className={`whal3s-h-full whal3s-grid whal3s-grid-cols-1 ${image ? 'md:whal3s-grid-cols-2 md:whal3s-gap-0' : ''} `}>
+          <div className={`${image ? 'whal3s-order-2 md:whal3s-order-1 whal3s-mt-10 md:whal3s-mt-0 md:whal3s-pl-5 md:whal3s-pt-5 md:whal3s-pr-20' : ''}   whal3s-flex whal3s-flex-col whal3s-justify-start md:whal3s-h-[35rem] max-md:whal3s-pb-10`}>
               <div className="whal3s-order-1 whal3s-flex-none whal3s-text-black">
                   <h3 className="whal3s-font-bold whal3s-text-3xl">{state.utility?.details.name}</h3>
                   <p className="whal3s-py-4">{state.utility.details.description}</p>
@@ -108,14 +108,14 @@ const StepNftsFetched = ({image}: {image?: string}) => {
 
               </div>
           </div>
-          <div
+          {image && <div
             className={`whal3s-rounded-xl whal3s-w-full whal3s-order-1 md:whal3s-order-2 whal3s-flex whal3s-justify-center whal3s-items-center  md:whal3s-h-[35rem]`}>
-              {image ? <img src={image}
+              <img src={image}
                             alt={'Modal image'}
                             className={'whal3s-bg-whal3s-gray whal3s-rounded-xl whal3s-w-full whal3s-max-h-full  whal3s-object-cover'}/>
-                : <div className={'whal3s-bg-gradient-to-tr whal3s-from-[#503eef] whal3s-to-[#9156d7] whal3s-rounded-xl whal3s-w-full whal3s-h-full whal3s-object-cover'}/>}
 
-          </div>
+          </div>}
+
       </div>
     );
 };

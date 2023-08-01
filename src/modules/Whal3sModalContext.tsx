@@ -24,7 +24,7 @@ const Whal3sModalContext = createContext<ContextType>({
 });
 
 // Create the reducer function
-const whal3sModalReducer = (state: Whal3sModalState,action:{type: 'SET_OPEN'|'SET_UTILITY'|'SET_STEP', payload:any}) => {
+const whal3sModalReducer = (state: Whal3sModalState, action:{type: 'SET_OPEN'|'SET_UTILITY'|'SET_STEP', payload:any}) => {
     switch (action.type) {
         case 'SET_OPEN':
             return { ...state, open: action.payload };
