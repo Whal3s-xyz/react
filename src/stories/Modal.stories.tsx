@@ -4,7 +4,8 @@ import { ConnectKitProvider, ConnectKitButton, getDefaultConfig } from 'connectk
 import { WagmiProvider } from '@whal3s/wagmiprovider'
 import { watchAccount } from '@wagmi/core'
 import { Whal3sModalContext, Whal3sModalProvider } from '../index'
-import { useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react';
+
 
 
 const meta: Meta<typeof Whal3sModalProvider> = {
@@ -33,7 +34,7 @@ type Story = StoryObj<typeof Whal3sModalProvider>;
 
 export const Default = {
   decorators: [
-    (Story: React.ReactNode, {args}:StoryContext) => {
+    (Story: any, {args}:StoryContext) => {
       const account = useAccount()
       const wagmiProvider = new WagmiProvider(account)
 
@@ -41,8 +42,8 @@ export const Default = {
         wagmiProvider.setAccount(account)
       })
       return (
-        <Whal3sModalProvider utilityId={args.utilityId}
-                             modalImage={args.modalImage}
+        <Whal3sModalProvider utilityId={args.utilityId as string}
+                             modalImage={args.modalImage as string}
                              provider={wagmiProvider}>
           <Story />
         </Whal3sModalProvider>
